@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF READER</title>
+    <link rel="stylesheet" href="static/style.css"> 
+</head>
+<body>
+    <div class="complete">
+    <div class="container">
+        <h2>File Upload</h2>
+        <form method="POST" enctype="multipart/form-data" action="/upload_file" id="uploadForm">
+            <div id="drop-area" class="drop-area">
+                <p>Drag & drop files here or click to select files</p>
+                <input type="file" id="fileElem" name="f1" style="display:none;" accept=".pdf">
+                <label for="fileElem" class="upload-label">Select files</label>
+            </div>
+            <button class="but" type="submit">Submit</button>
+        </form>
+        <div id="file-list"></div>
+    </div>
+    <div class="audio">
+    {% if state %}
+    <audio controls>
+        <source src="{{ url_for('send_audio') }}" type="audio/mpeg">
+    </audio>
+    <div class="data" id="data">
+            <button onclick="copyToClipboard('data')">Copy</button> 
+            <h1 >{{state}}</h1>
+    </div>
+    {% endif %}
+</div>
+</div>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
